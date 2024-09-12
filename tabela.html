@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Livros</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .blue-bg {
+            background-color: blue;
+            color: white;
+        }
+        .green-bg {
+            background-color: green;
+            color: white;
+        }
+        .white-bg {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="tabela-livros">
+        <thead>
+            <tr>
+                <th id="livro-col">Livro</th>
+                <th id="paginas-col">Páginas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dom Casmurro</td>
+                <td>256</td>
+            </tr>
+            <tr>
+                <td>Memórias Póstumas de Brás Cubas</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>O Primo Basílio</td>
+                <td>320</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Função para limpar a cor de fundo das células
+        function limparCor() {
+            const todasAsCelulas = document.querySelectorAll('td');
+            todasAsCelulas.forEach(celula => celula.classList.remove('blue-bg', 'green-bg'));
+        }
+
+        // Função para aplicar a cor de fundo azul para a coluna "Livro"
+        function aplicarCorLivro() {
+            limparCor();
+            const colunasLivros = document.querySelectorAll('tbody td:first-child');
+            colunasLivros.forEach(celula => celula.classList.add('blue-bg'));
+        }
+
+        // Função para aplicar a cor de fundo verde para a coluna "Páginas"
+        function aplicarCorPaginas() {
+            limparCor();
+            const colunasPaginas = document.querySelectorAll('tbody td:nth-child(2)');
+            colunasPaginas.forEach(celula => celula.classList.add('green-bg'));
+        }
+
+        // Event listeners para os cabeçalhos das colunas
+        document.getElementById('livro-col').addEventListener('click', aplicarCorLivro);
+        document.getElementById('paginas-col').addEventListener('click', aplicarCorPaginas);
+    </script>
+
+</body>
+</html>
